@@ -4,6 +4,14 @@
     padding: 0;
     box-sizing: border-box;
   }
+  .menu-list a {
+    color: white; /* Change link color to white */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .menu-list a:hover {
+    color: lightgray; /* Optional: Change color on hover */
+  }
   
   body {
     font-family: sans-serif;
