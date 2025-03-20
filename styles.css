@@ -1,0 +1,69 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+  }
+  
+  /* Main container - splits page into two columns */
+  .container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh; /* Fill the full browser height */
+  }
+  
+  /* Left Section (white bg) */
+  .left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* White background */
+  }
+  
+  /* Logo image */
+  .left-section img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  /* Right Section (dark green/teal bg) */
+  .right-section {
+    flex: 1;
+    background-color: #1f3d39; /* Adjust to match your exact color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Vertical menu items */
+  .menu-list {
+    list-style-type: none;
+    text-align: center;
+    width: 80%; /* Slightly narrower for alignment */
+    color: #ffffff;
+  }
+  
+  .menu-list li {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    margin: 1.5rem 0;
+    position: relative;
+    /* Optional border line or rule between items */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 1.5rem;
+  }
+  
+  /* Remove the top border from the first item */
+  .menu-list li:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+  
