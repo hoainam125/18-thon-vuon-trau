@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Làng Nghề Truyền Thống | 18 Thôn Vườn Trầu</title>
+
+  <!-- Google font to stay consistent -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  /* ———  VERTICAL SLIDER (only this page)  ———————————— */
+  :root{
+    --autoDelay:5000ms;           /* 5‑second cadence             */
+  }
+
+  body,html{
+    height:100%;
+    overflow:hidden;             /* JS gives back manual scroll  */
+  }
+
+  /* Scrollable column */
+  .v-slider{
+    height:100%;
+    width:100%;
+    overflow-y:auto;             /* user scrolls here            */
+    scroll-snap-type:y mandatory;
+    scroll-behavior:smooth;
+  }
+
+  .v-slide{
+    height:100vh;                /* full viewport frame          */
+    width:100%;
+    scroll-snap-align:start;
+    position:relative;
+  }
+
+  .v-slide img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* Tiny overlay label (optional) */
+  .v-slide span{
+    position:absolute;
+    bottom:1.5rem;
+    left:1.5rem;
+    background:rgba(0,0,0,.45);
+    color:#fff;
+    font-family:"Montserrat",sans-serif;
+    font-size:0.9rem;
+    padding:.4rem .9rem;
+    border-radius:4px;
+    letter-spacing:.03em;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- Pastel Home pill (reuse earlier CSS) -->
+  <a href="index.html" class="home-btn" title="Quay về trang chủ">HOME</a>
+
+  <!-- VERTICAL SLIDER -->
+  <div class="v-slider" id="vSlider">
+
+    <section class="v-slide">
+      <img src="images/craft_betel_garden.jpg" alt="Trầu cau – Vườn Trầu truyền thống">
+      <span>Vườn Trầu Truyền Thống</span>
+    </section>
+
+    <section class="v-slide">
+      <img src="images/craft_paper_fan.jpg" alt="Quạt giấy thủ công">
+      <span>Quạt Giấy Thủ Công</span>
+    </section>
+
+    <section class="v-slide">
+      <img src="images/craft_bamboo_weaving.jpg" alt="Đan tre truyền thống">
+      <span>Đan Tre Truyền Thống</span>
+    </section>
+
+    <section class="v-slide">
+      <img src="images/craft_trau_cau_processing.jpg" alt="Sơ chế trầu cau">
+      <span>Sơ Chế Trầu Cau</span>
+    </section>
+
+  </div>
+
+  <!-- Auto‑scroll logic: stops when user interacts -->
+  <script>
+  (function(){
+    const slider   = document.getElementById('vSlider');
+    const frames   = slider.children;
+    const delay    = parseInt(getComputedStyle(document.documentElement)
+                     .getPropertyValue('--autoDelay'));
+    let index      = 0;
+    let autoTimer  = setInterval(nextSlide, delay);
+
+    function nextSlide(){
+      index = (index + 1) % frames.length;
+      frames[index].scrollIntoView({behavior:'smooth'});
+    }
+
+    /* If the user scrolls (wheel / touch / key), cancel auto‑scroll */
+    ['wheel','touchstart','keydown','mousedown'].forEach(evt=>{
+      slider.addEventListener(evt, stopAuto, {once:true, passive:true});
+    });
+
+    function stopAuto(){
+      clearInterval(autoTimer);
+    }
+  })();
+  </script>
+
+</body>
+</html>
